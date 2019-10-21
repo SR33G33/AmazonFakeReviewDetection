@@ -4,8 +4,8 @@ public class testReview {
     public static void main(String[] args) {
         ArrayList<Integer> doubtScore = new ArrayList<>();
         doubtScore.add(0);
-        Review temp = new Review();
-        starRatingDoubtability(temp.getScore(), doubtScore);
+        Review temp = new Review("Flex Tape", 4.5, 4, "blah blah blah", false );
+        starRatingDoubtability(temp.getStars(), doubtScore);
 
     }
     public static void starRatingDoubtability(double score, ArrayList<Integer> doubtScore){
