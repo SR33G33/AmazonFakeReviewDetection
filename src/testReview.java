@@ -42,4 +42,16 @@ public class testReview {
                 doubtScore.set(0,doubtScore.get(0) + 10);
         }
     }
+
+    public static void checkBias(String review){
+        if(review.contains("free") || review.contains("review"))
+            doubtScore.set(0,doubtScore.get(0) + 10);
+    }
+
+    public static void countParagraphs(String review){
+        String[] temp = review.split("\n");
+        if(temp.length == 1){
+            doubtScore.set(0,doubtScore.get(0) + 3);
+        }
+    }
 }
