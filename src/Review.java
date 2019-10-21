@@ -7,7 +7,17 @@ public class Review {
     private boolean isReal;
 
 
+
     public Review(String productName, double stars, int helpful, String review, boolean isReal) {
+        this.productName = productName;
+        this.stars = stars;
+        this.helpful = helpful;
+        this.review = review;
+        this.isReal = isReal;
+
+    }
+
+    public Review(String productName, double stars, int helpful, String review) {
         this.productName = productName;
         this.stars = stars;
         this.helpful = helpful;
