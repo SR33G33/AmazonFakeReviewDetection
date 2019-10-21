@@ -4,9 +4,11 @@ public class testReview {
     public static void main(String[] args) {
         ArrayList<Integer> doubtScore = new ArrayList<>();
         doubtScore.add(0);
+        Review temp = new Review();
+        starRatingDoubtability(temp.getScore(), doubtScore);
 
     }
-    public void starRatingDoubtabiility(double score, ArrayList<Integer> doubtScore){
+    public static void starRatingDoubtability(double score, ArrayList<Integer> doubtScore){
         if(score == 5){
             doubtScore.set(0,doubtScore.get(0) + 6);
         }else if(score >= 4 && score < 5){
@@ -17,4 +19,6 @@ public class testReview {
             doubtScore.set(0,doubtScore.get(0) + 6);
         }
     }
+
+
 }
