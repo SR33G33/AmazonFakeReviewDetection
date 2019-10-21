@@ -35,4 +35,11 @@ public class testReview {
             doubtScore.set(0,doubtScore.get(0) + 3);
         }
     }
+
+    public static void checkExclamation(String review){
+        if(review.contains("!")){
+            if(!review.substring(review.indexOf("!"),review.indexOf("!")+1).equals("!") && !review.substring(review.indexOf("!")-1,review.indexOf("!")).equals("!"))
+                doubtScore.set(0,doubtScore.get(0) + 10);
+        }
+    }
 }
