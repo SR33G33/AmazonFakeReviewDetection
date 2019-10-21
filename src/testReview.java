@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class testReview {
+    static ArrayList<Integer> doubtScore = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<Integer> doubtScore = new ArrayList<>();
         doubtScore.add(0);
         Review temp = new Review("Flex Tape", 4.5, 4, "blah blah blah", false );
-        starRatingDoubtability(temp.getStars(), doubtScore);
+        starRatingDoubtability(temp.getStars());
 
     }
-    public static void starRatingDoubtability(double score, ArrayList<Integer> doubtScore){
+    public static void starRatingDoubtability(double score){
         if(score == 5){
             doubtScore.set(0,doubtScore.get(0) + 6);
         }else if(score >= 4 && score < 5){
@@ -20,5 +20,14 @@ public class testReview {
         }
     }
 
-
+    public static void lengthDoubtability(String review){
+        int length = review.length();
+        if(length < 20){
+            doubtScore.set(0,doubtScore.get(0) + 10);
+        }else if(length < 40){
+            doubtScore.set(0,doubtScore.get(0) + 6);
+        }else if(length < 60){
+            doubtScore.set(0,doubtScore.get(0) + 3);
+        }
+    }
 }
