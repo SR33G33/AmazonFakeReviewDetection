@@ -21,7 +21,12 @@ public class testReview {
     }
 
     public static void lengthDoubtability(String review){
-        int length = review.length();
+        int length = 0;
+        for (int i = 0; i < review.length(); i++) {
+            if(review.substring(i,i+1).equals(" "))
+                length++;
+        }
+        doubtScore.add(length);
         if(length < 20){
             doubtScore.set(0,doubtScore.get(0) + 10);
         }else if(length < 40){
