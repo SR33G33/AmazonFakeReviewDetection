@@ -26,7 +26,7 @@ public class testReview {
             doubtScore.set(0, doubtScore.get(0) + 6);
         } else if (score >= 4 && score < 5) {
             doubtScore.set(0, doubtScore.get(0) + 3);
-        } else if (score >= 2 && score < 3) {
+        } else if (score >= 2 && score < 4) {
             doubtScore.set(0, doubtScore.get(0) + 3);
         } else if (score >= 0 && score < 2) {
             doubtScore.set(0, doubtScore.get(0) + 6);
@@ -39,7 +39,6 @@ public class testReview {
             if (review.substring(i, i + 1).equals(" "))
                 length++;
         }
-        doubtScore.add(length);
         if (length < 20) {
             doubtScore.set(0, doubtScore.get(0) + 10);
         } else if (length < 40) {
