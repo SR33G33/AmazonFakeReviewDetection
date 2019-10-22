@@ -21,12 +21,11 @@ public class Review {
 
     }
 
-    public Review(String productName, double stars, int helpful, String review) {
+    public Review(String productName, double stars,  int helpful, String text) {
         this.productName = productName;
         this.stars = stars;
         this.helpful = helpful;
         this.text = text;
-        this.isReal = isReal;
 
     }
 
