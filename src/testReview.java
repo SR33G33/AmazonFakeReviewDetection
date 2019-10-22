@@ -5,8 +5,7 @@ public class testReview {
 
     public static void main(String[] args) {
         doubtScore.add(0);
-        Review temp = new Review("Flex Tape", 3, 12, "It's an essential book, but I don't find it specially bright enough in some aspects that Owsinski touches, i.e. the arrangement, he states his personal view and seems to differ from serious books speaking about structure and arrangement. It's good if you start from scratch to get to know basic stuff about type of reverbs, how a compressor/gate works, which are the basic 6 elements of a good mix, or the history of mixing, studios, etc.\n" +
-                "Specially oriented for the classic mixing engineer. If you are a modern mixing aspirant for styles like electronic music or hip hop you will find it too old dated in techniques. Although, the info shared in this book is basic and important but not essential in my opinion. It's good to start from the bottom if you like that way to do the things, but if you practically want to learn directly the technical stuff, I know much better options to read. Buy this book if you want to know about classic engineer's and a bit of history of all since half of the book are interviews. I would read it again if you ask me, but I know there could be a much better and complete book in the field, cutting some information and adding practical and modern techniques.", false);
+        Review temp = new Review("Flex Tape", 3, 12, "This product is great", false);
         starRatingDoubtability(temp.getStars());
         lengthDoubtability(temp.getReview());
         checkExclamation(temp.getReview());
@@ -14,7 +13,8 @@ public class testReview {
         countParagraphs(temp.getReview());
         helpfulScore(temp.getHelpful());
         compareWords(temp.getWordsList(), temp.getStars());
-        boolean check = doubtScore.get(0) >= 25;
+        boolean check = doubtScore.get(0) <= 15;
+        System.out.println(doubtScore.get(0));
         doubtScore.remove(0);
         System.out.println(check);
 
