@@ -5,7 +5,7 @@ public class testReview {
 
     public static void main(String[] args) {
         doubtScore.add(0);
-        Review temp = new Review("Flex Tape", 4.5, 4, "blah blah blah", false);
+        Review temp = new Review("Flex Tape", 4.5, 4, "This product is great", false);
         starRatingDoubtability(temp.getStars());
         lengthDoubtability(temp.getReview());
         checkExclamation(temp.getReview());
@@ -14,6 +14,8 @@ public class testReview {
         helpfulScore(temp.getHelpful());
         compareWords(temp.getWordsList(), temp.getStars());
         boolean check = doubtScore.get(0) >= 25;
+        doubtScore.remove(0);
+        System.out.println(check);
 
 
     }
