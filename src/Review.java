@@ -6,6 +6,7 @@ public class Review {
     private String text;
     private boolean isReal;
     private int numOfWords;
+    public String[] words;
 
 
 
@@ -16,6 +17,7 @@ public class Review {
         this.helpful = helpful;
         this.text = text;
         this.isReal = isReal;
+        words = text.split(" ");
 
     }
 
@@ -69,12 +71,15 @@ public class Review {
     }
 
     public int getNumOfWords() {
-      String[] words = text.split(" ");
         return words.length;
     }
 
     public void setNumOfWords(int numOfWords) {
         this.numOfWords = numOfWords;
+    }
+
+    public String[] getWordsList(){
+        return words;
     }
 
 }
