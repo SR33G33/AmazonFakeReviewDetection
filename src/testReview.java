@@ -6,6 +6,11 @@ public class testReview {
         doubtScore.add(0);
         Review temp = new Review("Flex Tape", 4.5, 4, "blah blah blah", false );
         starRatingDoubtability(temp.getStars());
+        lengthDoubtability(temp.getReview());
+        checkExclamation(temp.getReview());
+        checkBias(temp.getReview());
+        countParagraphs(temp.getReview());
+        helpfulScore(temp.getHelpful());
 
     }
     public static void starRatingDoubtability(double score){
@@ -54,4 +59,15 @@ public class testReview {
             doubtScore.set(0,doubtScore.get(0) + 3);
         }
     }
+
+    public static void helpfulScore(int helpful){
+        if(helpful == 0){
+            doubtScore.set(0,doubtScore.get(0) + 3);
+        }
+        if(helpful == 1){
+            doubtScore.set(0,doubtScore.get(0) + 5);
+        }
+    }
+
+
 }
