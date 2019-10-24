@@ -17,14 +17,13 @@ public class testReview {
 
     private static boolean runTest(Review review) {
         doubtScore.add(0);
-        Review temp = review;
-        starRatingDoubtability(temp.getStars());
-        lengthDoubtability(temp.getReview());
-        checkExclamation(temp.getReview());
-        checkBias(temp.getReview());
-        countParagraphs(temp.getReview());
-        helpfulScore(temp.getHelpful());
-        compareWords(temp.getWordsList(), temp.getStars());
+        starRatingDoubtability(review.getStars());
+        lengthDoubtability(review.getReview());
+        checkExclamation(review.getReview());
+        checkBias(review.getReview());
+        countParagraphs(review.getReview());
+        helpfulScore(review.getHelpful());
+        compareWords(review.getWordsList(), review.getStars());
         boolean check = doubtScore.get(0) <= 15;
         doubtScore.remove(0);
         return check;
@@ -66,7 +65,7 @@ public class testReview {
 
     public static void checkBias(String review) {
         if (review.contains("free") || review.contains("review"))
-            doubtScore.set(0, doubtScore.get(0) + 10);
+            doubtScore.set(0, doubtScore.get(0) + 20);
     }
 
     public static void countParagraphs(String review) {
@@ -92,14 +91,14 @@ public class testReview {
             for (String temp : review) {
                 for (int i = 0; i < positiveWordList.length; i++) {
                     if (positiveWordList[i].equalsIgnoreCase(temp))
-                        doubtScore.set(0, doubtScore.get(0) + 1);
+                        doubtScore.set(0, doubtScore.get(0) + 2);
                 }
             }
         } else {
             for (String temp : review) {
                 for (int i = 0; i < negativeWordList.length; i++) {
                     if (negativeWordList[i].equalsIgnoreCase(temp))
-                        doubtScore.set(0, doubtScore.get(0) + 1);
+                        doubtScore.set(0, doubtScore.get(0) + 2);
                 }
             }
         }
