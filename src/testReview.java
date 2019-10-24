@@ -13,6 +13,8 @@ public class testReview {
             boolean check = runTest(reviews.get(i));
             if (check == reviews.get(i).isReal())
                 counter++;
+            else
+                System.out.println("trial failed:" + i);
         }
         System.out.println((double)counter / reviews.size());
 
@@ -66,7 +68,8 @@ public class testReview {
         countParagraphs(review.getReview());
         helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
-        boolean check = doubtScore.get(0) <= 20;
+        boolean check = doubtScore.get(0) <= 19;
+        System.out.println(doubtScore.get(0));
         doubtScore.remove(0);
         return check;
     }
@@ -100,7 +103,7 @@ public class testReview {
 
     private static void checkExclamation(String review) {
         if (review.contains("!")) {
-            if (!review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
+            if (review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
                 doubtScore.set(0, doubtScore.get(0) + 10);
         }
     }
