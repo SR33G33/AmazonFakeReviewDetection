@@ -24,7 +24,7 @@ public class testReview {
         ArrayList<Review> fileInfoList = new ArrayList<Review>();
 
         try {
-            scanner = new Scanner(new FileInputStream("data/reviewList.txt"), "UTF-8");
+            scanner = new Scanner(new FileInputStream("data/reviewListText.txt"), "UTF-8");
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -36,7 +36,7 @@ public class testReview {
             scanner.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found " + "data/reviewList.txt");
+            System.out.println("File not found " + "data/reviewListText.txt");
         }
 
         return fileInfoList;
