@@ -7,23 +7,27 @@ public class testReview {
         ArrayList<Review> reviews;
         int counter = 0;
         for (int i = 0; i < reviews.size(); i++) {
-
-            doubtScore.add(0);
-            Review temp = reviews.get(i);
-            starRatingDoubtability(temp.getStars());
-            lengthDoubtability(temp.getReview());
-            checkExclamation(temp.getReview());
-            checkBias(temp.getReview());
-            countParagraphs(temp.getReview());
-            helpfulScore(temp.getHelpful());
-            compareWords(temp.getWordsList(), temp.getStars());
-            boolean check = doubtScore.get(0) <= 15;
-            doubtScore.remove(0);
+            boolean check = runTest(reviews.get(i));
             if(check == reviews.get(i).isReal())
                 counter++;
         }
         System.out.println(counter/reviews.size());
 
+    }
+
+    private static boolean runTest(Review review) {
+        doubtScore.add(0);
+        Review temp = review;
+        starRatingDoubtability(temp.getStars());
+        lengthDoubtability(temp.getReview());
+        checkExclamation(temp.getReview());
+        checkBias(temp.getReview());
+        countParagraphs(temp.getReview());
+        helpfulScore(temp.getHelpful());
+        compareWords(temp.getWordsList(), temp.getStars());
+        boolean check = doubtScore.get(0) <= 15;
+        doubtScore.remove(0);
+        return check;
     }
 
     public static void starRatingDoubtability(double score) {
