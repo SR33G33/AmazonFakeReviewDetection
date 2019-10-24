@@ -44,7 +44,7 @@ public class testReview {
 
     private static Review processLine(String line) {
 
-        String[] values = line.split(",");
+        String[] values = line.split("~");
 
         double numOfStars = Double.parseDouble(values[0].trim());
         String text = values[1].trim();
