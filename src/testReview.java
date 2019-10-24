@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class testReview {
-    static ArrayList<Integer> doubtScore = new ArrayList<>();
+    private static ArrayList<Integer> doubtScore = new ArrayList<>();
 
     public static void main(String[] args) {
-        ArrayList<Review> reviews = makeReviewList("data/reviewList.txt");
+        ArrayList<Review> reviews = makeReviewList();
         int counter = 0;
         for (int i = 0; i < reviews.size(); i++) {
             boolean check = runTest(reviews.get(i));
@@ -18,13 +18,13 @@ public class testReview {
 
     }
 
-    public static ArrayList<Review> makeReviewList(String filename) {
+    private static ArrayList<Review> makeReviewList() {
 
         Scanner scanner;
         ArrayList<Review> fileInfoList = new ArrayList<Review>();
 
         try {
-            scanner = new Scanner(new FileInputStream(filename), "UTF-8");
+            scanner = new Scanner(new FileInputStream("data/reviewList.txt"), "UTF-8");
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -36,13 +36,13 @@ public class testReview {
             scanner.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found " + filename);
+            System.out.println("File not found " + "data/reviewList.txt");
         }
 
         return fileInfoList;
     }
 
-    public static Review processLine(String line) {
+    private static Review processLine(String line) {
 
         String[] values = line.split(",");
 
@@ -72,7 +72,7 @@ public class testReview {
         return check;
     }
 
-    public static void starRatingDoubtability(double score) {
+    private static void starRatingDoubtability(double score) {
         if (score == 5) {
             doubtScore.set(0, doubtScore.get(0) + 6);
         } else if (score >= 4 && score < 5) {
@@ -84,7 +84,7 @@ public class testReview {
         }
     }
 
-    public static void lengthDoubtability(String review) {
+    private static void lengthDoubtability(String review) {
         int length = 0;
         for (int i = 0; i < review.length(); i++) {
             if (review.substring(i, i + 1).equals(" "))
@@ -99,26 +99,26 @@ public class testReview {
         }
     }
 
-    public static void checkExclamation(String review) {
+    private static void checkExclamation(String review) {
         if (review.contains("!")) {
             if (!review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
                 doubtScore.set(0, doubtScore.get(0) + 10);
         }
     }
 
-    public static void checkBias(String review) {
+    private static void checkBias(String review) {
         if (review.contains("free") || review.contains("review"))
             doubtScore.set(0, doubtScore.get(0) + 20);
     }
 
-    public static void countParagraphs(String review) {
+    private static void countParagraphs(String review) {
         String[] temp = review.split("\n");
         if (temp.length == 1) {
             doubtScore.set(0, doubtScore.get(0) + 3);
         }
     }
 
-    public static void helpfulScore(int helpful) {
+    private static void helpfulScore(int helpful) {
         if (helpful == 0) {
             doubtScore.set(0, doubtScore.get(0) + 3);
         }
@@ -127,7 +127,7 @@ public class testReview {
         }
     }
 
-    public static void compareWords(String[] review, double stars) {
+    private static void compareWords(String[] review, double stars) {
         String[] positiveWordList = {"Positive", "Great", "Excellent", "mind Blowing", "Terrific", "Good", "Amazing", "fabulous", "guaranteed", "risk-free", "best seller", "satisfy", "safe", "premium", "unique", "authentic", "extrordinary", "remarkable", "dazzling", "brilliant", "staggering", "Terrific", "titanic", "easy", "value", "incredible", "convinient", "stunning", "breathtaking", "awesome", "spectacular", "wonderful", "marvelous", "fantastic", "pleasant"};
         String[] negativeWordList = {"negative", "Bad", "annoying", "damaged", "filthy", "hate", "boring", "dirty", "dreadful", "dishonest", "disgusting", "gross", "harmful", "horrible", "hideous", "lousy", "messy", "nasty", "negative", "never", "old", "poor", "plain", "terrible", "ugly", "unfavorable", "unsatisfactory", "unlucky", "unpleaseant", "worthless"};
         if (stars > 3) {
