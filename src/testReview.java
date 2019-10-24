@@ -1,17 +1,60 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class testReview {
     static ArrayList<Integer> doubtScore = new ArrayList<>();
 
     public static void main(String[] args) {
-        ArrayList<Review> reviews;
+        ArrayList<Review> reviews = makeReviewList("data/reviewList.txt");
         int counter = 0;
         for (int i = 0; i < reviews.size(); i++) {
             boolean check = runTest(reviews.get(i));
-            if(check == reviews.get(i).isReal())
+            if (check == reviews.get(i).isReal())
                 counter++;
         }
-        System.out.println(counter/reviews.size());
+        System.out.println(counter / reviews.size());
+
+    }
+
+    public static ArrayList<Review> makeReviewList(String filename) {
+
+        Scanner scanner;
+        ArrayList<Review> fileInfoList = new ArrayList<Review>();
+
+        try {
+            scanner = new Scanner(new FileInputStream(filename), "UTF-8");
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                Review review = processLine(line);
+                fileInfoList.add(review);
+            }
+
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found " + filename);
+        }
+
+        return fileInfoList;
+    }
+
+    public static Review processLine(String line) {
+
+        String[] values = line.split(",");
+
+        double numOfStars = Double.parseDouble(values[0].trim());
+        String text = values[1].trim();
+        int numOfHelpful = Integer.parseInt(values[2].trim());
+        boolean realOrFake = values[3].equalsIgnoreCase("real");
+
+
+
+        return new Review(numOfStars, text, numOfHelpful, realOrFake);
+
 
     }
 

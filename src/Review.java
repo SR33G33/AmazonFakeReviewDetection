@@ -9,9 +9,7 @@ public class Review {
     public String[] words;
 
 
-
-
-    public Review(String productName, double stars, int helpful, String text, boolean isReal) {
+    public Review(double stars, String text, int helpful, boolean isReal) {
         this.productName = productName;
         this.stars = stars;
         this.helpful = helpful;
@@ -21,7 +19,7 @@ public class Review {
 
     }
 
-    public Review(String productName, double stars,  int helpful, String text) {
+    public Review(String productName, double stars, int helpful, String text) {
         this.productName = productName;
         this.stars = stars;
         this.helpful = helpful;
@@ -77,7 +75,7 @@ public class Review {
         this.numOfWords = numOfWords;
     }
 
-    public String[] getWordsList(){
+    public String[] getWordsList() {
         return words;
     }
 
