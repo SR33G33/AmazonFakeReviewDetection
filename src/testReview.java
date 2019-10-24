@@ -14,7 +14,7 @@ public class testReview {
             if (check == reviews.get(i).isReal())
                 counter++;
         }
-        System.out.println(counter / reviews.size());
+        System.out.println((double)counter / reviews.size());
 
     }
 
@@ -25,7 +25,6 @@ public class testReview {
 
         try {
             scanner = new Scanner(new FileInputStream("data/reviewListText.txt"), "UTF-8");
-            scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
@@ -67,7 +66,7 @@ public class testReview {
         countParagraphs(review.getReview());
         helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
-        boolean check = doubtScore.get(0) <= 15;
+        boolean check = doubtScore.get(0) <= 20;
         doubtScore.remove(0);
         return check;
     }
