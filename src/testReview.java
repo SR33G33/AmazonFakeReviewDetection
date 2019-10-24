@@ -4,20 +4,25 @@ public class testReview {
     static ArrayList<Integer> doubtScore = new ArrayList<>();
 
     public static void main(String[] args) {
-        doubtScore.add(0);
-        Review temp = new Review("Flex Tape", 3, 12, "This product is great", false);
-        starRatingDoubtability(temp.getStars());
-        lengthDoubtability(temp.getReview());
-        checkExclamation(temp.getReview());
-        checkBias(temp.getReview());
-        countParagraphs(temp.getReview());
-        helpfulScore(temp.getHelpful());
-        compareWords(temp.getWordsList(), temp.getStars());
-        boolean check = doubtScore.get(0) <= 15;
-        System.out.println(doubtScore.get(0));
-        doubtScore.remove(0);
-        System.out.println(check);
+        ArrayList<Review> reviews;
+        int counter = 0;
+        for (int i = 0; i < reviews.size(); i++) {
 
+            doubtScore.add(0);
+            Review temp = reviews.get(i);
+            starRatingDoubtability(temp.getStars());
+            lengthDoubtability(temp.getReview());
+            checkExclamation(temp.getReview());
+            checkBias(temp.getReview());
+            countParagraphs(temp.getReview());
+            helpfulScore(temp.getHelpful());
+            compareWords(temp.getWordsList(), temp.getStars());
+            boolean check = doubtScore.get(0) <= 15;
+            doubtScore.remove(0);
+            if(check == reviews.get(i).isReal())
+                counter++;
+        }
+        System.out.println(counter/reviews.size());
 
     }
 
