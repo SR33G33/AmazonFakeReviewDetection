@@ -108,7 +108,7 @@ public class testReview {
         countParagraphs(review.getReview());
         //helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
-        boolean check = doubtScore.get(0) <= 19;
+        boolean check = doubtScore.get(0) <= 32;
         System.out.println(doubtScore.get(0));
         doubtScore.remove(0);
         return check;
@@ -133,13 +133,13 @@ public class testReview {
                 length++;
         }
         if (length < 20) {
-            doubtScore.set(0, doubtScore.get(0) + 10);
-        } else if (length < 40) {
-            doubtScore.set(0, doubtScore.get(0) + 6);
-        } else if (length < 60) {
+            doubtScore.set(0, doubtScore.get(0) + 32);
+        } else if (length < 30) {
+            doubtScore.set(0, doubtScore.get(0) + 4);
+        } else if (length < 77) {
             doubtScore.set(0, doubtScore.get(0) + 3);
         }else{
-            doubtScore.set(0, doubtScore.get(0) - 5);
+            doubtScore.set(0, doubtScore.get(0) + 32);
         }
     }
 
