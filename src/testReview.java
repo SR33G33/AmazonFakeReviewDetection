@@ -14,7 +14,7 @@ public class testReview {
             if (check == reviews.get(i).isReal())
                 counter++;
             else
-                System.out.println("trial failed:" + i);
+                System.out.println("trial failed:" + (i+1));
         }
         System.out.println((double)counter / reviews.size());
 
