@@ -26,7 +26,7 @@ public class testReview {
         ArrayList<Review> fileInfoList = new ArrayList<Review>();
 
         try {
-            scanner = new Scanner(new FileInputStream("data/amazon_review.txt"), "UTF-8");
+            scanner = new Scanner(new FileInputStream("data/amazon_reviews.txt"), "UTF-8");
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
@@ -103,7 +103,7 @@ public class testReview {
         checkExclamation(review.getReview());
         checkBias(review.getReview());
         countParagraphs(review.getReview());
-        helpfulScore(review.getHelpful());
+        //helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
         boolean check = doubtScore.get(0) <= 19;
         System.out.println(doubtScore.get(0));

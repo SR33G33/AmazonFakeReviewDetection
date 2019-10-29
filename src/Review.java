@@ -36,7 +36,7 @@ public class Review {
 
     }
 
-    public Review(int stars, String text, boolean isReal){
+    public Review(double stars, String text, boolean isReal){
         this.stars = stars;
         this.text = text;
         this.isReal = isReal;
