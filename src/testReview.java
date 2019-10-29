@@ -33,7 +33,7 @@ public class testReview {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
-                Review review = processLine(line);
+                Review review = processLineV2(line);
                 fileInfoList.add(review);
             }
 
