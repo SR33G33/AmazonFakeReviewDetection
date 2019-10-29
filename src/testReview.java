@@ -27,6 +27,9 @@ public class testReview {
 
         try {
             scanner = new Scanner(new FileInputStream("data/amazon_reviews.txt"), "UTF-8");
+
+            scanner.nextLine();
+
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
