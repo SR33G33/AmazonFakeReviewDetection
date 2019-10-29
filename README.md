@@ -10,7 +10,14 @@ Main:
   
   finds the percentage of failures and successes
   
+makeReviewListV2:
+
+  parses the new data set
   
+processLineV2:
+
+  helper method for makeReviewListV2
+
 makeReviewList:
   
   actual method that parses text file
