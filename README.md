@@ -10,6 +10,7 @@ Main:
   
   finds the percentage of failures and successes
   
+  
 makeReviewList:
   
   actual method that parses text file
@@ -18,17 +19,20 @@ makeReviewList:
   
   scanner, scans each line
   
+  
 processLine:
   
   helper method for makeReviewList
   
   changes values to expected data types
 
+
 runTest:
   
   run from main
   
   list of all the factors that the code runs through to evaluate if it is real or false
+  
   
 starRatingDoubtability:
   
@@ -38,23 +42,28 @@ starRatingDoubtability:
   
   3, 4 -------> 3
   
+  
 lengthDoubtability:
   
   adds a doubtability rating of 10, 6, 3, or -5 based on how long it is
   
   the longer it is the lower the doubtability rating
   
+  
 checkExclamation:
   
   if there is only one exclamation mark, adds a doubtability rating of 10
+  
   
 checkBias:
 
   adds doubtability rating of 10 if program detects that the reviewer was paid/got the product for free
   
+  
 countParagraphs:
 
   if there is only 1 paragraph, adds a doubtability score of 3
+  
   
 helpfulScore:
 
@@ -64,6 +73,7 @@ helpfulScore:
   
   1 ------------->5
   
+  
 compareWords:
 
   if it is a negative review, searches the review for the negative key words
@@ -71,6 +81,7 @@ compareWords:
   if it is a positive review, searches the review for the positive key words
   
   adds doubtability score of 2 every time a word comes up
+  
   
 Review Class:
 
