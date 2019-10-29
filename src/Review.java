@@ -40,7 +40,7 @@ public class Review {
         this.stars = stars;
         this.text = text;
         this.isReal = isReal;
-
+        words = text.split(" ");
     }
 
     public double getStars() {
