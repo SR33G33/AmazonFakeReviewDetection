@@ -7,7 +7,7 @@ public class testReview {
     private static ArrayList<Integer> doubtScore = new ArrayList<>();
 
     public static void main(String[] args) {
-        ArrayList<Review> reviews = makeReviewList();
+        ArrayList<Review> reviews = makeReviewListV2();
         int counter = 0;
         for (int i = 0; i < reviews.size(); i++) {
             boolean check = runTest(reviews.get(i));
@@ -20,6 +20,43 @@ public class testReview {
 
     }
 
+    private static ArrayList<Review> makeReviewListV2() {
+
+        Scanner scanner;
+        ArrayList<Review> fileInfoList = new ArrayList<Review>();
+
+        try {
+            scanner = new Scanner(new FileInputStream("data/amazon_review.txt"), "UTF-8");
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                Review review = processLine(line);
+                fileInfoList.add(review);
+            }
+
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found " + "data/reviewListText.txt");
+        }
+
+        return fileInfoList;
+    }
+
+    private static Review processLineV2(String line) {
+
+        String[] values = line.split("\t");
+
+        double numOfStars = Double.parseDouble(values[2].trim());
+        String text = values[8].trim();
+        boolean realOrFake = values[1].equalsIgnoreCase("__label1__");
+
+
+
+        return new Review(numOfStars, text, realOrFake);
+
+
+    }
     private static ArrayList<Review> makeReviewList() {
 
         Scanner scanner;
