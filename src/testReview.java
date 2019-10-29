@@ -98,7 +98,7 @@ public class testReview {
             doubtScore.set(0, doubtScore.get(0) + 6);
         } else if (length < 60) {
             doubtScore.set(0, doubtScore.get(0) + 3);
-        }else if (length > 50){
+        }else{
             doubtScore.set(0, doubtScore.get(0) - 5);
         }
     }
