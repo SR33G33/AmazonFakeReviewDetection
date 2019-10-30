@@ -5,48 +5,16 @@ Main Description:
   doubtability score. If this score is greater than 32, then the review is marked as fake and vice versa.
 
 Main:
-  
   parses the text document into different reviews then loops through and "grades" them
-  
   finds the percentage of failures and successes
-  
-makeReviewListV2:
 
-  parses the new data set
-  
-processLineV2:
-
-  helper method for makeReviewListV2
-
-makeReviewList:
-  
-  actual method that parses text file
-  
-  fun from main
-  
-  scanner, scans each line
-  
-  
-processLine:
-  
-  helper method for makeReviewList
-  
-  changes values to expected data types
-
-
-runTest(runs from main):
-  
-  list of all the factors that the code runs through to evaluate if it is real or false
+runTest(boolean output, runs from main):
+  runs all of the doubtability methods for each of the reviews
+  returns a boolean of if our code deems it true or fake
   
   
 starRatingDoubtability(star number imput, no output, runs from runTest):
-  
-  adds a doubtability rating of 6 or 3 based on how many stars there are
-  
-  2 and lower, 5 ----> 6
-  
-  3, 4 -------> 3
-  
+  adds to the doubtability based on the number of stars
   
 lengthDoubtability(text input, no output, runs from runTest):
   
@@ -87,7 +55,21 @@ compareWords(text input, no output, runs from runTest):
   
   adds doubtability score of 2 every time a word comes up
   
+makeReviewListV2:
+  parses the new data set
   
+processLineV2:
+  helper method for makeReviewListV2
+
+makeReviewList:
+  actual method that parses text file
+  fun from main
+  scanner, scans each line
+  
+processLine:
+  helper method for makeReviewList
+  changes values to expected data types
+
 Review Class:
 
   this is a data transfer object that just holds the review text, star rating, etc.
