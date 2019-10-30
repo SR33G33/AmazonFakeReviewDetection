@@ -1,23 +1,34 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class testReview {
     private static ArrayList<Integer> doubtScore = new ArrayList<>();
+    private static boolean append_value = false;
 
     public static void main(String[] args) {
+        doubtScore.add(0);
         ArrayList<Review> reviews = makeReviewListV2();
         int counter = 0;
+        int writeCounter = 0;
         for (int i = 0; i < reviews.size(); i++) {
             boolean check = runTest(reviews.get(i));
             if (check == reviews.get(i).isReal())
                 counter++;
             else {
-                System.out.println("trial failed:" + (reviews.get(i).getReview()));
-                System.out.println(reviews.get(i).isReal());
+                if(writeCounter != 0)
+                    append_value = true;
+                writeCounter++;
+                try {
+                    WriteFile data = new WriteFile("data/wrong_trials.txt", append_value);
+                    data.writeToFile(reviews.get(i).getReview(), doubtScore.get(0));
+                }catch(IOException e){
+                    System.out.println("encountered writing problem");
+                }
+                System.out.println("trial failed:" + (i + 1));
             }
-
         }
         System.out.println((double)counter / reviews.size());
 
@@ -103,6 +114,7 @@ public class testReview {
     }
 
     private static boolean runTest(Review review) {
+        doubtScore.remove(0);
         doubtScore.add(0);
         starRatingDoubtability(review.getStars());
         lengthDoubtability(review.getReview());
@@ -112,8 +124,7 @@ public class testReview {
         //helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
         boolean check = doubtScore.get(0) <= 32;
-        System.out.println(doubtScore.get(0) - 32);
-        doubtScore.remove(0);
+        System.out.println(doubtScore.get(0));
         return check;
     }
 
@@ -135,12 +146,12 @@ public class testReview {
             if (review.substring(i, i + 1).equals(" "))
                 length++;
         }
-        if (length < 25) {
+        if (length < 20) {
             doubtScore.set(0, doubtScore.get(0) + 32);
         } else if (length < 30) {
-            doubtScore.set(0, doubtScore.get(0) + 25);
+            doubtScore.set(0, doubtScore.get(0) + 4);
         } else if (length < 77) {
-            doubtScore.set(0, doubtScore.get(0) - 5 );
+            doubtScore.set(0, doubtScore.get(0) + 3);
         }else{
             doubtScore.set(0, doubtScore.get(0) + 32);
         }
@@ -149,7 +160,7 @@ public class testReview {
     private static void checkExclamation(String review) {
         if (review.contains("!")) {
             if (review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
-                doubtScore.set(0, doubtScore.get(0) + 8);
+                doubtScore.set(0, doubtScore.get(0) + 10);
         }
     }
 
@@ -161,7 +172,7 @@ public class testReview {
     private static void countParagraphs(String review) {
         String[] temp = review.split("\n");
         if (temp.length == 1) {
-            doubtScore.set(0, doubtScore.get(0) + 5);
+            doubtScore.set(0, doubtScore.get(0) + 3);
         }
     }
 
