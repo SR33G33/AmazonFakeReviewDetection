@@ -23,7 +23,7 @@ public class testReview {
                 writeCounter++;
                 try {
                     WriteFile data = new WriteFile("data/wrong_trials.txt", append_value);
-                    data.writeToFile(reviews.get(i).getReview(), doubtScore.get(0));
+                    data.writeToFile(reviews.get(i).getReview(), doubtScore.get(0), reviews.get(i).isReal(), check);
                 }catch(IOException e){
                     System.out.println("encountered writing problem");
                 }

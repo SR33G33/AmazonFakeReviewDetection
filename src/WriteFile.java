@@ -15,10 +15,10 @@ public class WriteFile {
         append_to_file = append_value;
     }
 
-    public void writeToFile(String textLine, int doubtability) throws IOException{
+    public void writeToFile(String textLine, int doubtability, boolean actual, boolean guess) throws IOException{
         FileWriter write = new FileWriter(path, append_to_file);
         PrintWriter print_line = new PrintWriter(write);
-        print_line.printf("%d" + "%n" + "%s" + "%n" + "%n", doubtability, textLine);
+        print_line.printf("%d" + "%n" + "%s" + "%b" + "%n" + "%s" + "%b" + "%n" + "%s" + "%n" + "%n", doubtability,"is actually real: ", actual, "our guess: ", guess, textLine);
         print_line.close();
     }
 }
