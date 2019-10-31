@@ -18,19 +18,19 @@ public class testReview {
             if (check == reviews.get(i).isReal())
                 counter++;
             else {
-                if(writeCounter != 0)
+                if (writeCounter != 0)
                     append_value = true;
                 writeCounter++;
                 try {
                     WriteFile data = new WriteFile("data/wrong_trials.txt", append_value);
                     data.writeToFile(reviews.get(i).getReview(), doubtScore.get(0), reviews.get(i).isReal(), check);
-                }catch(IOException e){
+                } catch (IOException e) {
                     System.out.println("encountered writing problem");
                 }
                 System.out.println("trial failed:" + (i + 1));
             }
         }
-        System.out.println((double)counter / reviews.size());
+        System.out.println((double) counter / reviews.size());
 
     }
 
@@ -69,11 +69,11 @@ public class testReview {
         boolean realOrFake = values[1].equalsIgnoreCase("__label1__");
 
 
-
         return new Review(numOfStars, text, realOrFake);
 
 
     }
+
     private static ArrayList<Review> makeReviewList() {
 
         Scanner scanner;
@@ -107,7 +107,6 @@ public class testReview {
         boolean realOrFake = values[3].equalsIgnoreCase("real");
 
 
-
         return new Review(numOfStars, text, numOfHelpful, realOrFake);
 
 
@@ -124,7 +123,7 @@ public class testReview {
         //helpfulScore(review.getHelpful());
         compareWords(review.getWordsList(), review.getStars());
         boolean check = doubtScore.get(0) <= 32;
-        System.out.println(doubtScore.get(0));
+        System.out.println(doubtScore.get(0) - 32);
         return check;
     }
 
@@ -146,13 +145,13 @@ public class testReview {
             if (review.substring(i, i + 1).equals(" "))
                 length++;
         }
-        if (length < 20) {
+        if (length < 25) {
             doubtScore.set(0, doubtScore.get(0) + 32);
         } else if (length < 30) {
-            doubtScore.set(0, doubtScore.get(0) + 4);
+            doubtScore.set(0, doubtScore.get(0) + 25);
         } else if (length < 77) {
-            doubtScore.set(0, doubtScore.get(0) + 3);
-        }else{
+            doubtScore.set(0, doubtScore.get(0) + -5);
+        } else {
             doubtScore.set(0, doubtScore.get(0) + 32);
         }
     }
@@ -160,7 +159,7 @@ public class testReview {
     private static void checkExclamation(String review) {
         if (review.contains("!")) {
             if (review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
-                doubtScore.set(0, doubtScore.get(0) + 10);
+                doubtScore.set(0, doubtScore.get(0) + 8);
         }
     }
 
@@ -172,7 +171,7 @@ public class testReview {
     private static void countParagraphs(String review) {
         String[] temp = review.split("\n");
         if (temp.length == 1) {
-            doubtScore.set(0, doubtScore.get(0) + 3);
+            doubtScore.set(0, doubtScore.get(0) + 5);
         }
     }
 
@@ -186,7 +185,7 @@ public class testReview {
     }
 
     private static void compareWords(String[] review, double stars) {
-        String[] positiveWordList = {"quality","Positive", "Great", "Excellent", "mind Blowing", "Terrific", "Good", "Amazing", "fabulous", "guaranteed", "risk-free", "best seller", "satisfy", "safe", "premium", "unique", "authentic", "extrordinary", "remarkable", "dazzling", "brilliant", "staggering", "Terrific", "titanic", "easy", "value", "incredible", "convinient", "stunning", "breathtaking", "awesome", "spectacular", "wonderful", "marvelous", "fantastic", "pleasant"};
+        String[] positiveWordList = {"quality", "Positive", "Great", "Excellent", "mind Blowing", "Terrific", "Good", "Amazing", "fabulous", "guaranteed", "risk-free", "best seller", "satisfy", "safe", "premium", "unique", "authentic", "extrordinary", "remarkable", "dazzling", "brilliant", "staggering", "Terrific", "titanic", "easy", "value", "incredible", "convinient", "stunning", "breathtaking", "awesome", "spectacular", "wonderful", "marvelous", "fantastic", "pleasant"};
         String[] negativeWordList = {"negative", "Bad", "annoying", "damaged", "filthy", "hate", "boring", "dirty", "dreadful", "dishonest", "disgusting", "gross", "harmful", "horrible", "hideous", "lousy", "messy", "nasty", "negative", "never", "old", "poor", "plain", "terrible", "ugly", "unfavorable", "unsatisfactory", "unlucky", "unpleaseant", "worthless"};
         if (stars > 3) {
             for (String temp : review) {
