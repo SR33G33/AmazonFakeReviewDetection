@@ -30,6 +30,8 @@ public class testReview {
                 System.out.println("trial failed:" + (i + 1));
             }
         }
+        System.out.println(counter);
+        System.out.println(reviews.size());
         System.out.println((double)counter / reviews.size());
 
     }
@@ -146,10 +148,10 @@ public class testReview {
             if (review.substring(i, i + 1).equals(" "))
                 length++;
         }
-        if (length < 20) {
+        if (length < 25) {
             doubtScore.set(0, doubtScore.get(0) + 32);
         } else if (length < 30) {
-            doubtScore.set(0, doubtScore.get(0) + 4);
+            doubtScore.set(0, doubtScore.get(0) + 25);
         } else if (length < 77) {
             doubtScore.set(0, doubtScore.get(0) + -5);
         } else {
@@ -160,7 +162,7 @@ public class testReview {
     private static void checkExclamation(String review) {
         if (review.contains("!")) {
             if (review.substring(review.indexOf("!"), review.indexOf("!") + 1).equals("!") && !review.substring(review.indexOf("!") - 1, review.indexOf("!")).equals("!"))
-                doubtScore.set(0, doubtScore.get(0) + 10);
+                doubtScore.set(0, doubtScore.get(0) + 8);
         }
     }
 
@@ -172,7 +174,7 @@ public class testReview {
     private static void countParagraphs(String review) {
         String[] temp = review.split("\n");
         if (temp.length == 1) {
-            doubtScore.set(0, doubtScore.get(0) + 3);
+            doubtScore.set(0, doubtScore.get(0) + 5);
         }
     }
 
