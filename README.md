@@ -18,9 +18,7 @@ starRatingDoubtability(star number imput, no output, runs from runTest):
   
 lengthDoubtability(text input, no output, runs from runTest):
   
-  adds a doubtability rating of 10, 6, 3, or -5 based on how long it is
-  
-  the longer it is the lower the doubtability rating
+  adds a doubtability rating of based on how long it is, the longer it is the lower the doubtability rating
   
   
 checkExclamation(text input, no output, runs from runTest):
@@ -41,11 +39,6 @@ countParagraphs(text input, no output, runs from runTest):
 helpfulScore:
 
   adds doubtability score for how many helpful things it got
-  
-  0 ------------->3
-  
-  1 ------------->5
-  
   
 compareWords(text input, no output, runs from runTest):
 
